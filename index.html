@@ -11,8 +11,8 @@
 
 <body>
     <div class="page">
-        <div class="overlay"></div>
         <header class="header animate" data-animation="show" data-delay="600">
+            <div class="overlay"></div>
             <div class="header__wrapper container">
                 <img src="./src/assets/images/writer-works-logo.svg" alt="Логотип Writer Works">
                 <nav class="nav">
@@ -318,10 +318,23 @@
                     </ul>
                 </div>
                 <div class="container">
-                    <form class="theme__form animate" data-animation="fade-up" action="#" method="post">
+                    <form class="theme__form contact-form animate" data-animation="fade-up" action="#" method="post">
                         <input type="text" name="input-name" placeholder="Ваше имя">
-                        <input type="phone" name="phone-input" placeholder="Ваш телефон">
-                        <input type="text" name="input-details" placeholder="Какая у вас специальность, сроки, какие имеются наработки">
+                        <div class="phone-input">
+                            <div class="phone-country country-select">
+                                <span class="flag">🇺🇦</span>
+                                <span class="code">+380</span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <ul class="country-list">
+                                <li data-code="+380" data-mask="(99) 999-99-99">🇺🇦 Украина</li>
+                                <li data-code="+7" data-mask="(999) 999-99-99">🇷🇺 Россия</li>
+                                <li data-code="+1" data-mask="(999) 999-9999">🇺🇸 США</li>
+                                <li data-code="+44" data-mask="(9999) 999999">🇬🇧 Великобритания</li>
+                            </ul>
+                            <input type="text" id="phone-input" placeholder="(99) 999-99-99" class="Ваш телефон" />
+                        </div>
+                        <textarea name="input-details" placeholder="Какая у вас специальность, сроки, какие имеются наработки"></textarea>
                         <input class="site-button" name="input-submit" type="submit" value="Проконсультироваться">
                     </form>
                 </div>
@@ -385,10 +398,23 @@
                                 Оставьте свой контакт и мы убедим вас, что сотрудничество с нами — <span>одно из самых правильных ваших решений за последние несколько лет</span>
                             </p>
                         </div>
-                        <form class="saving-time__form animate" data-animation="fade-up" data-delay="100" method="post" action="#">
+                        <form class="saving-time__form contact-form animate" data-animation="fade-up" data-delay="100" method="post" action="#">
                             <input type="text" name="input-name" placeholder="Ваше имя">
-                            <input type="phone" name="input-phone">
-                            <input class="site-button" type="submit" value="Жду звонка">
+                            <div class="phone-input">
+                                <div class="phone-country country-select">
+                                    <span class="flag">🇺🇦</span>
+                                    <span class="code">+380</span>
+                                    <span class="arrow">▼</span>
+                                </div>
+                                <ul class="country-list">
+                                    <li data-code="+380" data-mask="(99) 999-99-99">🇺🇦 Украина</li>
+                                    <li data-code="+7" data-mask="(999) 999-99-99">🇷🇺 Россия</li>
+                                    <li data-code="+1" data-mask="(999) 999-9999">🇺🇸 США</li>
+                                    <li data-code="+44" data-mask="(9999) 999999">🇬🇧 Великобритания</li>
+                                </ul>
+                                <input type="text" id="phone" placeholder="(99) 999-99-99" class="input phone" />
+                            </div>
+                            <input class="site-button submit-btn" type="submit" value="Жду звонка">
                         </form>
                         <img class="saving-time__form-img-1" src="./src/assets/images/save-time_form-img-1.png" alt="">
                         <img class="saving-time__form-img-2" src="./src/assets/images/save-time_form-img-2.png" alt="">
@@ -447,6 +473,21 @@
                 <p class="footer__copyright">&copy; 2021 Все права защищены</p>
             </div>
         </footer>
+
+        <!-- <button id="openModalAccepted">dwdwd</button> -->
+        <div class="modal-overlay"></div>
+        <div id="modalAccepted">
+            <button id="closeModalAccepted">
+                <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="14.5" cy="14.5" r="14" stroke="#D83838"/>
+                    <rect x="8.91016" y="10.0898" width="1.11111" height="15" transform="rotate(-45 8.91016 10.0898)" fill="#D83838"/>
+                    <rect x="9.69531" y="20.6953" width="1.11111" height="15" transform="rotate(-135 9.69531 20.6953)" fill="#D83838"/>
+                </svg>
+            </button>
+            <h2>Заявку получили! </h2>
+            <p>Ожидайте звонка менеджера в течение 15 минут </p>
+            <p>в рабочее время с 10:00 до 19:00</p>
+        </div>
     </div>
 
     <script defer src="./src/script.js"></script>

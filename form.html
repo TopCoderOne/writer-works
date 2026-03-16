@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./form.css">
+</head>
+
+<body>
+
+    <div class="form-wrapper">
+
+        <form id="contactForm" class="form">
+
+            <input type="text" id="name" placeholder="Ваше имя" class="input" />
+
+            <div class="phone-input">
+
+                <div class="phone-country" id="countrySelect">
+                    <span class="flag" id="flag">🇺🇦</span>
+                    <span id="code">+380</span>
+                    <span class="arrow">▼</span>
+                </div>
+
+                <ul class="country-list" id="countryList">
+                    <li data-code="+380" data-mask="(99) 999-99-99">🇺🇦 Украина</li>
+                    <li data-code="+7" data-mask="(999) 999-99-99">🇷🇺 Россия</li>
+                    <li data-code="+1" data-mask="(999) 999-9999">🇺🇸 США</li>
+                    <li data-code="+44" data-mask="(9999) 999999">🇬🇧 Великобритания</li>
+                </ul>
+
+                <input type="text" id="phone" placeholder="(99) 999-99-99" class="input phone" />
+
+            </div>
+
+            <button id="submitBtn" disabled>
+                Жду звонка
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="modal" id="modal">
+
+        <div class="modal-content">
+
+            <h2>Заявка принята</h2>
+            <p>Мы скоро свяжемся с вами</p>
+
+            <button id="closeModal">OK</button>
+
+        </div>
+
+    </div>
+
+    <script src="./src/script.js"></script>
+</body>
+
+</html>
