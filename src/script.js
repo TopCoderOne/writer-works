@@ -81,99 +81,96 @@ elements.forEach(el => observer.observe(el));
 const forms = document.querySelectorAll('.contact-form');
 
 forms.forEach(form => {
+    if (!form) return;
+    
+    const countrySelect = form.querySelector('.country-select');
+    const countryList = form.querySelector('.country-list');
 
-const countrySelect = form.querySelector('.country-select');
-const countryList = form.querySelector('.country-list');
+    const code = form.querySelector('.code');
+    const flag = form.querySelector('.flag');
 
-const code = form.querySelector('.code');
-const flag = form.querySelector('.flag');
+    const phoneInput = form.querySelector('.phone');
+    const nameInput = form.querySelector('.name');
 
-const phoneInput = form.querySelector('.phone');
-const nameInput = form.querySelector('.name');
+    const submitBtn = form.querySelector('.submit-btn');
 
-const submitBtn = form.querySelector('.submit-btn');
-
-let currentMask = "(99) 999-99-99";
-
-
-countrySelect.addEventListener('click', () => {
-
-countryList.style.display =
-countryList.style.display === "block"
-? "none"
-: "block";
-
-});
+    let currentMask = "(99) 999-99-99";
 
 
-countryList.addEventListener('click', (e) => {
-
-if (e.target.tagName !== "LI") return;
-
-const mask = e.target.dataset.mask;
-const countryCode = e.target.dataset.code;
-const countryFlag = e.target.textContent.split(" ")[0];
-
-currentMask = mask;
-
-code.textContent = countryCode;
-flag.textContent = countryFlag;
-
-phoneInput.placeholder = mask;
-
-phoneInput.value = "";
-
-validate();
-
-});
+    countrySelect.addEventListener('click', () => {
+        countryList.style.display =
+            countryList.style.display === "block" ? "none" : "block";
+    });
 
 
-phoneInput.addEventListener("input", () => {
+    countryList.addEventListener('click', (e) => {
 
-let numbers = phoneInput.value.replace(/\D/g, "");
+        if (e.target.tagName !== "LI") return;
 
-let result = "";
-let index = 0;
+        const mask = e.target.dataset.mask;
+        const countryCode = e.target.dataset.code;
+        const countryFlag = e.target.textContent.split(" ")[0];
 
-for (let char of currentMask) {
+        currentMask = mask;
 
-if (char === "9") {
+        code.textContent = countryCode;
+        flag.textContent = countryFlag;
 
-if (numbers[index]) {
-result += numbers[index];
-index++;
-}
+        phoneInput.placeholder = mask;
 
-} else {
+        phoneInput.value = "";
 
-result += char;
+        validate();
 
-}
-
-}
-
-phoneInput.value = result;
-
-validate();
-
-});
+    });
 
 
-nameInput.addEventListener("input", validate);
+    phoneInput.addEventListener("input", () => {
+
+        let numbers = phoneInput.value.replace(/\D/g, "");
+
+        let result = "";
+        let index = 0;
+
+        for (let char of currentMask) {
+
+            if (char === "9") {
+
+                if (numbers[index]) {
+                    result += numbers[index];
+                    index++;
+                }
+
+            } else {
+
+                result += char;
+
+            }
+
+        }
+
+        phoneInput.value = result;
+
+        validate();
+
+    });
 
 
-function validate() {
+    nameInput.addEventListener("input", validate);
 
-const nameValid = nameInput.value.trim().length > 2;
 
-const digits = phoneInput.value.replace(/\D/g, "");
-const maskDigits = (currentMask.match(/9/g) || []).length;
+    function validate() {
 
-const phoneValid = digits.length === maskDigits;
+        const nameValid = nameInput.value.trim().length > 2;
 
-submitBtn.disabled = !(nameValid && phoneValid);
+        const digits = phoneInput.value.replace(/\D/g, "");
+        const maskDigits = (currentMask.match(/9/g) || []).length;
 
-}
+        const phoneValid = digits.length === maskDigits;
+
+        submitBtn.disabled = !(nameValid && phoneValid);
+
+    }
 
 });
 
@@ -280,8 +277,46 @@ submitBtn.disabled = !(nameValid && phoneValid);
 // }
 
 
+// // O(N)
+// function linearSearch(arr, item) {
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] === item) {
+//             return i;
+//         }
+//     }
 
+//     return null;
+// }
 
+// // O(log2(N))
+// function binarySearch(arr, item) {
+//     let start = 0;
+//     let end = arr.length;
+//     let middle;
+//     let found = false;
+//     let position = -1;
 
+//     while(found === false && start <= end) {
+//         middle = Math.floor((start + end) / 2);
 
+//         if (arr[middle] === item) {
+//             found = true;
+//             position = middle;
+//             return position;
+//         }
 
+//         if (item < arr[middle]) {
+//             end = middle - 1;
+//         } else {
+//             start = middle + 1;
+//         }
+//     }
+
+//     return position;
+// }
+
+// let array = [3, 2, 72, 6, 33, 21, 8, 11, 53, 81];
+
+// console.log("LinearSearch: " + linearSearch(array, 8));
+
+// console.log("BinarySearch: " + binarySearch(array, 8));

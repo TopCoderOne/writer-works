@@ -734,7 +734,7 @@ body {
     gap: 35px;
 }
 
-.theme__form>:where(input[type="text"], input[type="phone"], textarea) {
+.theme__form :where(input[type="text"], input[type="tel"], textarea) {
     background-color: #ffffff;
     border: 1px solid #d9d9d9;
     padding: 21px 16px;
@@ -744,6 +744,10 @@ body {
     font-size: 14px;
     line-height: 18px;
     color: #d9d9d9;
+}
+
+.theme__form input[type="tel"] {
+    width: 226px;
 }
 
 .theme__form>textarea {
